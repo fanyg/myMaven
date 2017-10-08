@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pactera.dao.IUserInfoDao" >
+  <resultMap id="BaseResultMap" type="com.pactera.domain.UserInfo" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="LOGIN_PHONE_NUMBER" property="loginPhoneNumber" jdbcType="VARCHAR" />
+    <result column="CIF_ID" property="cifId" jdbcType="VARCHAR" />
+    <result column="CLIENT_NAME" property="clientName" jdbcType="VARCHAR" />
+    <result column="ICARD_TYPE" property="icardType" jdbcType="VARCHAR" />
+    <result column="ICARD_ID" property="icardId" jdbcType="VARCHAR" />
+    <result column="ENTRY_STATUS" property="entryStatus" jdbcType="INTEGER" />
+    <result column="LIST_TYPE" property="listType" jdbcType="INTEGER" />
+    <result column="CREDIT_REQ" property="creditReq" jdbcType="VARCHAR" />
+    <result column="CREDIT_STATUS" property="creditStatus" jdbcType="INTEGER" />
+    <result column="OVERDUE_FLAG" property="overdueFlag" jdbcType="INTEGER" />
+    <result column="OPENACCOUNT_FLAG" property="openaccountFlag" jdbcType="INTEGER" />
+    <result column="IDENTITY_CHANNEL" property="identityChannel" jdbcType="INTEGER" />
+    <result column="BANK_CARD" property="bankCard" jdbcType="VARCHAR" />
+    <result column="BANK_CODE" property="bankCode" jdbcType="VARCHAR" />
+    <result column="BANK_CARD_TYPE" property="bankCardType" jdbcType="INTEGER" />
+    <result column="CELL_PHONE_NO" property="cellPhoneNo" jdbcType="VARCHAR" />
+    <result column="VERTIFY_POLICE_FLAG" property="vertifyPoliceFlag" jdbcType="INTEGER" />
+    <result column="UPLOAD_IDENTITY_FLAG" property="uploadIdentityFlag" jdbcType="INTEGER" />
+    <result column="VERTIFY_IDENTITY_FLAG" property="vertifyIdentityFlag" jdbcType="INTEGER" />
+    <result column="VERTIFY_POLICE_IMAGE_FLAG" property="vertifyPoliceImageFlag" jdbcType="INTEGER" />
+    <result column="VERTIFY_FACE_FLAG" property="vertifyFaceFlag" jdbcType="INTEGER" />
+    <result column="SIGN_CREDIT_FLAG" property="signCreditFlag" jdbcType="INTEGER" />
+    <result column="FILL_IN_SUPPINFO_FLAG" property="fillInSuppinfoFlag" jdbcType="INTEGER" />
+    <result column="SET_TRANPASS_FLAG" property="setTranpassFlag" jdbcType="INTEGER" />
+    <result column="SENT_CREDIT_FLAG" property="sentCreditFlag" jdbcType="INTEGER" />
+    <result column="CREDIT_RESULT" property="creditResult" jdbcType="BIGINT" />
+    <result column="VALID_AMOUNT" property="validAmount" jdbcType="BIGINT" />
+    <result column="USER_STATUS" property="userStatus" jdbcType="INTEGER" />
+    <result column="MODIFIED" property="modified" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, LOGIN_PHONE_NUMBER, CIF_ID, CLIENT_NAME, ICARD_TYPE, ICARD_ID, ENTRY_STATUS, 
+    LIST_TYPE, CREDIT_REQ, CREDIT_STATUS, OVERDUE_FLAG, OPENACCOUNT_FLAG, IDENTITY_CHANNEL, 
+    BANK_CARD, BANK_CODE, BANK_CARD_TYPE, CELL_PHONE_NO, VERTIFY_POLICE_FLAG, UPLOAD_IDENTITY_FLAG, 
+    VERTIFY_IDENTITY_FLAG, VERTIFY_POLICE_IMAGE_FLAG, VERTIFY_FACE_FLAG, SIGN_CREDIT_FLAG, 
+    FILL_IN_SUPPINFO_FLAG, SET_TRANPASS_FLAG, SENT_CREDIT_FLAG, CREDIT_RESULT, VALID_AMOUNT, 
+    USER_STATUS, MODIFIED
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_user_info
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_user_info
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.pactera.domain.UserInfo" >
+    insert into t_user_info (ID, LOGIN_PHONE_NUMBER, CIF_ID, 
+      CLIENT_NAME, ICARD_TYPE, ICARD_ID, 
+      ENTRY_STATUS, LIST_TYPE, CREDIT_REQ, 
+      CREDIT_STATUS, OVERDUE_FLAG, OPENACCOUNT_FLAG, 
+      IDENTITY_CHANNEL, BANK_CARD, BANK_CODE, 
+      BANK_CARD_TYPE, CELL_PHONE_NO, VERTIFY_POLICE_FLAG, 
+      UPLOAD_IDENTITY_FLAG, VERTIFY_IDENTITY_FLAG, 
+      VERTIFY_POLICE_IMAGE_FLAG, VERTIFY_FACE_FLAG, 
+      SIGN_CREDIT_FLAG, FILL_IN_SUPPINFO_FLAG, SET_TRANPASS_FLAG, 
+      SENT_CREDIT_FLAG, CREDIT_RESULT, VALID_AMOUNT, 
+      USER_STATUS, MODIFIED)
+    values (#{id,jdbcType=BIGINT}, #{loginPhoneNumber,jdbcType=VARCHAR}, #{cifId,jdbcType=VARCHAR}, 
+      #{clientName,jdbcType=VARCHAR}, #{icardType,jdbcType=VARCHAR}, #{icardId,jdbcType=VARCHAR}, 
+      #{entryStatus,jdbcType=INTEGER}, #{listType,jdbcType=INTEGER}, #{creditReq,jdbcType=VARCHAR}, 
+      #{creditStatus,jdbcType=INTEGER}, #{overdueFlag,jdbcType=INTEGER}, #{openaccountFlag,jdbcType=INTEGER}, 
+      #{identityChannel,jdbcType=INTEGER}, #{bankCard,jdbcType=VARCHAR}, #{bankCode,jdbcType=VARCHAR}, 
+      #{bankCardType,jdbcType=INTEGER}, #{cellPhoneNo,jdbcType=VARCHAR}, #{vertifyPoliceFlag,jdbcType=INTEGER}, 
+      #{uploadIdentityFlag,jdbcType=INTEGER}, #{vertifyIdentityFlag,jdbcType=INTEGER}, 
+      #{vertifyPoliceImageFlag,jdbcType=INTEGER}, #{vertifyFaceFlag,jdbcType=INTEGER}, 
+      #{signCreditFlag,jdbcType=INTEGER}, #{fillInSuppinfoFlag,jdbcType=INTEGER}, #{setTranpassFlag,jdbcType=INTEGER}, 
+      #{sentCreditFlag,jdbcType=INTEGER}, #{creditResult,jdbcType=BIGINT}, #{validAmount,jdbcType=BIGINT}, 
+      #{userStatus,jdbcType=INTEGER}, #{modified,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pactera.domain.UserInfo" >
+    insert into t_user_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="loginPhoneNumber != null" >
+        LOGIN_PHONE_NUMBER,
+      </if>
+      <if test="cifId != null" >
+        CIF_ID,
+      </if>
+      <if test="clientName != null" >
+        CLIENT_NAME,
+      </if>
+      <if test="icardType != null" >
+        ICARD_TYPE,
+      </if>
+      <if test="icardId != null" >
+        ICARD_ID,
+      </if>
+      <if test="entryStatus != null" >
+        ENTRY_STATUS,
+      </if>
+      <if test="listType != null" >
+        LIST_TYPE,
+      </if>
+      <if test="creditReq != null" >
+        CREDIT_REQ,
+      </if>
+      <if test="creditStatus != null" >
+        CREDIT_STATUS,
+      </if>
+      <if test="overdueFlag != null" >
+        OVERDUE_FLAG,
+      </if>
+      <if test="openaccountFlag != null" >
+        OPENACCOUNT_FLAG,
+      </if>
+      <if test="identityChannel != null" >
+        IDENTITY_CHANNEL,
+      </if>
+      <if test="bankCard != null" >
+        BANK_CARD,
+      </if>
+      <if test="bankCode != null" >
+        BANK_CODE,
+      </if>
+      <if test="bankCardType != null" >
+        BANK_CARD_TYPE,
+      </if>
+      <if test="cellPhoneNo != null" >
+        CELL_PHONE_NO,
+      </if>
+      <if test="vertifyPoliceFlag != null" >
+        VERTIFY_POLICE_FLAG,
+      </if>
+      <if test="uploadIdentityFlag != null" >
+        UPLOAD_IDENTITY_FLAG,
+      </if>
+      <if test="vertifyIdentityFlag != null" >
+        VERTIFY_IDENTITY_FLAG,
+      </if>
+      <if test="vertifyPoliceImageFlag != null" >
+        VERTIFY_POLICE_IMAGE_FLAG,
+      </if>
+      <if test="vertifyFaceFlag != null" >
+        VERTIFY_FACE_FLAG,
+      </if>
+      <if test="signCreditFlag != null" >
+        SIGN_CREDIT_FLAG,
+      </if>
+      <if test="fillInSuppinfoFlag != null" >
+        FILL_IN_SUPPINFO_FLAG,
+      </if>
+      <if test="setTranpassFlag != null" >
+        SET_TRANPASS_FLAG,
+      </if>
+      <if test="sentCreditFlag != null" >
+        SENT_CREDIT_FLAG,
+      </if>
+      <if test="creditResult != null" >
+        CREDIT_RESULT,
+      </if>
+      <if test="validAmount != null" >
+        VALID_AMOUNT,
+      </if>
+      <if test="userStatus != null" >
+        USER_STATUS,
+      </if>
+      <if test="modified != null" >
+        MODIFIED,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="loginPhoneNumber != null" >
+        #{loginPhoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="cifId != null" >
+        #{cifId,jdbcType=VARCHAR},
+      </if>
+      <if test="clientName != null" >
+        #{clientName,jdbcType=VARCHAR},
+      </if>
+      <if test="icardType != null" >
+        #{icardType,jdbcType=VARCHAR},
+      </if>
+      <if test="icardId != null" >
+        #{icardId,jdbcType=VARCHAR},
+      </if>
+      <if test="entryStatus != null" >
+        #{entryStatus,jdbcType=INTEGER},
+      </if>
+      <if test="listType != null" >
+        #{listType,jdbcType=INTEGER},
+      </if>
+      <if test="creditReq != null" >
+        #{creditReq,jdbcType=VARCHAR},
+      </if>
+      <if test="creditStatus != null" >
+        #{creditStatus,jdbcType=INTEGER},
+      </if>
+      <if test="overdueFlag != null" >
+        #{overdueFlag,jdbcType=INTEGER},
+      </if>
+      <if test="openaccountFlag != null" >
+        #{openaccountFlag,jdbcType=INTEGER},
+      </if>
+      <if test="identityChannel != null" >
+        #{identityChannel,jdbcType=INTEGER},
+      </if>
+      <if test="bankCard != null" >
+        #{bankCard,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCode != null" >
+        #{bankCode,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardType != null" >
+        #{bankCardType,jdbcType=INTEGER},
+      </if>
+      <if test="cellPhoneNo != null" >
+        #{cellPhoneNo,jdbcType=VARCHAR},
+      </if>
+      <if test="vertifyPoliceFlag != null" >
+        #{vertifyPoliceFlag,jdbcType=INTEGER},
+      </if>
+      <if test="uploadIdentityFlag != null" >
+        #{uploadIdentityFlag,jdbcType=INTEGER},
+      </if>
+      <if test="vertifyIdentityFlag != null" >
+        #{vertifyIdentityFlag,jdbcType=INTEGER},
+      </if>
+      <if test="vertifyPoliceImageFlag != null" >
+        #{vertifyPoliceImageFlag,jdbcType=INTEGER},
+      </if>
+      <if test="vertifyFaceFlag != null" >
+        #{vertifyFaceFlag,jdbcType=INTEGER},
+      </if>
+      <if test="signCreditFlag != null" >
+        #{signCreditFlag,jdbcType=INTEGER},
+      </if>
+      <if test="fillInSuppinfoFlag != null" >
+        #{fillInSuppinfoFlag,jdbcType=INTEGER},
+      </if>
+      <if test="setTranpassFlag != null" >
+        #{setTranpassFlag,jdbcType=INTEGER},
+      </if>
+      <if test="sentCreditFlag != null" >
+        #{sentCreditFlag,jdbcType=INTEGER},
+      </if>
+      <if test="creditResult != null" >
+        #{creditResult,jdbcType=BIGINT},
+      </if>
+      <if test="validAmount != null" >
+        #{validAmount,jdbcType=BIGINT},
+      </if>
+      <if test="userStatus != null" >
+        #{userStatus,jdbcType=INTEGER},
+      </if>
+      <if test="modified != null" >
+        #{modified,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pactera.domain.UserInfo" >
+    update t_user_info
+    <set >
+      <if test="loginPhoneNumber != null" >
+        LOGIN_PHONE_NUMBER = #{loginPhoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="cifId != null" >
+        CIF_ID = #{cifId,jdbcType=VARCHAR},
+      </if>
+      <if test="clientName != null" >
+        CLIENT_NAME = #{clientName,jdbcType=VARCHAR},
+      </if>
+      <if test="icardType != null" >
+        ICARD_TYPE = #{icardType,jdbcType=VARCHAR},
+      </if>
+      <if test="icardId != null" >
+        ICARD_ID = #{icardId,jdbcType=VARCHAR},
+      </if>
+      <if test="entryStatus != null" >
+        ENTRY_STATUS = #{entryStatus,jdbcType=INTEGER},
+      </if>
+      <if test="listType != null" >
+        LIST_TYPE = #{listType,jdbcType=INTEGER},
+      </if>
+      <if test="creditReq != null" >
+        CREDIT_REQ = #{creditReq,jdbcType=VARCHAR},
+      </if>
+      <if test="creditStatus != null" >
+        CREDIT_STATUS = #{creditStatus,jdbcType=INTEGER},
+      </if>
+      <if test="overdueFlag != null" >
+        OVERDUE_FLAG = #{overdueFlag,jdbcType=INTEGER},
+      </if>
+      <if test="openaccountFlag != null" >
+        OPENACCOUNT_FLAG = #{openaccountFlag,jdbcType=INTEGER},
+      </if>
+      <if test="identityChannel != null" >
+        IDENTITY_CHANNEL = #{identityChannel,jdbcType=INTEGER},
+      </if>
+      <if test="bankCard != null" >
+        BANK_CARD = #{bankCard,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCode != null" >
+        BANK_CODE = #{bankCode,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardType != null" >
+        BANK_CARD_TYPE = #{bankCardType,jdbcType=INTEGER},
+      </if>
+      <if test="cellPhoneNo != null" >
+        CELL_PHONE_NO = #{cellPhoneNo,jdbcType=VARCHAR},
+      </if>
+      <if test="vertifyPoliceFlag != null" >
+        VERTIFY_POLICE_FLAG = #{vertifyPoliceFlag,jdbcType=INTEGER},
+      </if>
+      <if test="uploadIdentityFlag != null" >
+        UPLOAD_IDENTITY_FLAG = #{uploadIdentityFlag,jdbcType=INTEGER},
+      </if>
+      <if test="vertifyIdentityFlag != null" >
+        VERTIFY_IDENTITY_FLAG = #{vertifyIdentityFlag,jdbcType=INTEGER},
+      </if>
+      <if test="vertifyPoliceImageFlag != null" >
+        VERTIFY_POLICE_IMAGE_FLAG = #{vertifyPoliceImageFlag,jdbcType=INTEGER},
+      </if>
+      <if test="vertifyFaceFlag != null" >
+        VERTIFY_FACE_FLAG = #{vertifyFaceFlag,jdbcType=INTEGER},
+      </if>
+      <if test="signCreditFlag != null" >
+        SIGN_CREDIT_FLAG = #{signCreditFlag,jdbcType=INTEGER},
+      </if>
+      <if test="fillInSuppinfoFlag != null" >
+        FILL_IN_SUPPINFO_FLAG = #{fillInSuppinfoFlag,jdbcType=INTEGER},
+      </if>
+      <if test="setTranpassFlag != null" >
+        SET_TRANPASS_FLAG = #{setTranpassFlag,jdbcType=INTEGER},
+      </if>
+      <if test="sentCreditFlag != null" >
+        SENT_CREDIT_FLAG = #{sentCreditFlag,jdbcType=INTEGER},
+      </if>
+      <if test="creditResult != null" >
+        CREDIT_RESULT = #{creditResult,jdbcType=BIGINT},
+      </if>
+      <if test="validAmount != null" >
+        VALID_AMOUNT = #{validAmount,jdbcType=BIGINT},
+      </if>
+      <if test="userStatus != null" >
+        USER_STATUS = #{userStatus,jdbcType=INTEGER},
+      </if>
+      <if test="modified != null" >
+        MODIFIED = #{modified,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pactera.domain.UserInfo" >
+    update t_user_info
+    set LOGIN_PHONE_NUMBER = #{loginPhoneNumber,jdbcType=VARCHAR},
+      CIF_ID = #{cifId,jdbcType=VARCHAR},
+      CLIENT_NAME = #{clientName,jdbcType=VARCHAR},
+      ICARD_TYPE = #{icardType,jdbcType=VARCHAR},
+      ICARD_ID = #{icardId,jdbcType=VARCHAR},
+      ENTRY_STATUS = #{entryStatus,jdbcType=INTEGER},
+      LIST_TYPE = #{listType,jdbcType=INTEGER},
+      CREDIT_REQ = #{creditReq,jdbcType=VARCHAR},
+      CREDIT_STATUS = #{creditStatus,jdbcType=INTEGER},
+      OVERDUE_FLAG = #{overdueFlag,jdbcType=INTEGER},
+      OPENACCOUNT_FLAG = #{openaccountFlag,jdbcType=INTEGER},
+      IDENTITY_CHANNEL = #{identityChannel,jdbcType=INTEGER},
+      BANK_CARD = #{bankCard,jdbcType=VARCHAR},
+      BANK_CODE = #{bankCode,jdbcType=VARCHAR},
+      BANK_CARD_TYPE = #{bankCardType,jdbcType=INTEGER},
+      CELL_PHONE_NO = #{cellPhoneNo,jdbcType=VARCHAR},
+      VERTIFY_POLICE_FLAG = #{vertifyPoliceFlag,jdbcType=INTEGER},
+      UPLOAD_IDENTITY_FLAG = #{uploadIdentityFlag,jdbcType=INTEGER},
+      VERTIFY_IDENTITY_FLAG = #{vertifyIdentityFlag,jdbcType=INTEGER},
+      VERTIFY_POLICE_IMAGE_FLAG = #{vertifyPoliceImageFlag,jdbcType=INTEGER},
+      VERTIFY_FACE_FLAG = #{vertifyFaceFlag,jdbcType=INTEGER},
+      SIGN_CREDIT_FLAG = #{signCreditFlag,jdbcType=INTEGER},
+      FILL_IN_SUPPINFO_FLAG = #{fillInSuppinfoFlag,jdbcType=INTEGER},
+      SET_TRANPASS_FLAG = #{setTranpassFlag,jdbcType=INTEGER},
+      SENT_CREDIT_FLAG = #{sentCreditFlag,jdbcType=INTEGER},
+      CREDIT_RESULT = #{creditResult,jdbcType=BIGINT},
+      VALID_AMOUNT = #{validAmount,jdbcType=BIGINT},
+      USER_STATUS = #{userStatus,jdbcType=INTEGER},
+      MODIFIED = #{modified,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

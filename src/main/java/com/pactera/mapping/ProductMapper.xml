@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pactera.dao.IProductDao" >
+  <resultMap id="BaseResultMap" type="com.pactera.domain.Product" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="PRODUCT_ID" property="productId" jdbcType="BIGINT" />
+    <result column="PRODUCT_NAME" property="productName" jdbcType="VARCHAR" />
+    <result column="PRODUCT_CODE" property="productCode" jdbcType="VARCHAR" />
+    <result column="PRODUCT_STATUS" property="productStatus" jdbcType="INTEGER" />
+    <result column="ACCOUNT_TYPE" property="accountType" jdbcType="INTEGER" />
+    <result column="MIN_AMOUNT" property="minAmount" jdbcType="BIGINT" />
+    <result column="MAX_AMOUNT" property="maxAmount" jdbcType="BIGINT" />
+    <result column="CREATED" property="created" jdbcType="TIMESTAMP" />
+    <result column="MODIFIED" property="modified" jdbcType="TIMESTAMP" />
+    <result column="LIMIT_CYCLE" property="limitCycle" jdbcType="INTEGER" />
+    <result column="IS_DEL" property="isDel" jdbcType="INTEGER" />
+    <result column="IS_PROJECT_SHARED" property="isProjectShared" jdbcType="INTEGER" />
+    <result column="IS_PUBLIC_PAY" property="isPublicPay" jdbcType="TINYINT" />
+    <result column="MANNUL_PAY" property="mannulPay" jdbcType="TINYINT" />
+    <result column="LOAN_ORDER_PAY" property="loanOrderPay" jdbcType="TINYINT" />
+    <result column="REFUND_PAY_OVERFLOW" property="refundPayOverflow" jdbcType="INTEGER" />
+    <result column="OP_OWNER" property="opOwner" jdbcType="VARCHAR" />
+    <result column="OVER_FLOW_ORDER_PAY" property="overFlowOrderPay" jdbcType="INTEGER" />
+    <result column="PRODUCT_STATUS_DQM" property="productStatusDqm" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, PRODUCT_ID, PRODUCT_NAME, PRODUCT_CODE, PRODUCT_STATUS, ACCOUNT_TYPE, MIN_AMOUNT, 
+    MAX_AMOUNT, CREATED, MODIFIED, LIMIT_CYCLE, IS_DEL, IS_PROJECT_SHARED, IS_PUBLIC_PAY, 
+    MANNUL_PAY, LOAN_ORDER_PAY, REFUND_PAY_OVERFLOW, OP_OWNER, OVER_FLOW_ORDER_PAY, PRODUCT_STATUS_DQM
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from product
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from product
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.pactera.domain.Product" >
+    insert into product (ID, PRODUCT_ID, PRODUCT_NAME, 
+      PRODUCT_CODE, PRODUCT_STATUS, ACCOUNT_TYPE, 
+      MIN_AMOUNT, MAX_AMOUNT, CREATED, 
+      MODIFIED, LIMIT_CYCLE, IS_DEL, 
+      IS_PROJECT_SHARED, IS_PUBLIC_PAY, MANNUL_PAY, 
+      LOAN_ORDER_PAY, REFUND_PAY_OVERFLOW, OP_OWNER, 
+      OVER_FLOW_ORDER_PAY, PRODUCT_STATUS_DQM)
+    values (#{id,jdbcType=BIGINT}, #{productId,jdbcType=BIGINT}, #{productName,jdbcType=VARCHAR}, 
+      #{productCode,jdbcType=VARCHAR}, #{productStatus,jdbcType=INTEGER}, #{accountType,jdbcType=INTEGER}, 
+      #{minAmount,jdbcType=BIGINT}, #{maxAmount,jdbcType=BIGINT}, #{created,jdbcType=TIMESTAMP}, 
+      #{modified,jdbcType=TIMESTAMP}, #{limitCycle,jdbcType=INTEGER}, #{isDel,jdbcType=INTEGER}, 
+      #{isProjectShared,jdbcType=INTEGER}, #{isPublicPay,jdbcType=TINYINT}, #{mannulPay,jdbcType=TINYINT}, 
+      #{loanOrderPay,jdbcType=TINYINT}, #{refundPayOverflow,jdbcType=INTEGER}, #{opOwner,jdbcType=VARCHAR}, 
+      #{overFlowOrderPay,jdbcType=INTEGER}, #{productStatusDqm,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pactera.domain.Product" >
+    insert into product
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="productId != null" >
+        PRODUCT_ID,
+      </if>
+      <if test="productName != null" >
+        PRODUCT_NAME,
+      </if>
+      <if test="productCode != null" >
+        PRODUCT_CODE,
+      </if>
+      <if test="productStatus != null" >
+        PRODUCT_STATUS,
+      </if>
+      <if test="accountType != null" >
+        ACCOUNT_TYPE,
+      </if>
+      <if test="minAmount != null" >
+        MIN_AMOUNT,
+      </if>
+      <if test="maxAmount != null" >
+        MAX_AMOUNT,
+      </if>
+      <if test="created != null" >
+        CREATED,
+      </if>
+      <if test="modified != null" >
+        MODIFIED,
+      </if>
+      <if test="limitCycle != null" >
+        LIMIT_CYCLE,
+      </if>
+      <if test="isDel != null" >
+        IS_DEL,
+      </if>
+      <if test="isProjectShared != null" >
+        IS_PROJECT_SHARED,
+      </if>
+      <if test="isPublicPay != null" >
+        IS_PUBLIC_PAY,
+      </if>
+      <if test="mannulPay != null" >
+        MANNUL_PAY,
+      </if>
+      <if test="loanOrderPay != null" >
+        LOAN_ORDER_PAY,
+      </if>
+      <if test="refundPayOverflow != null" >
+        REFUND_PAY_OVERFLOW,
+      </if>
+      <if test="opOwner != null" >
+        OP_OWNER,
+      </if>
+      <if test="overFlowOrderPay != null" >
+        OVER_FLOW_ORDER_PAY,
+      </if>
+      <if test="productStatusDqm != null" >
+        PRODUCT_STATUS_DQM,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="productId != null" >
+        #{productId,jdbcType=BIGINT},
+      </if>
+      <if test="productName != null" >
+        #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="productCode != null" >
+        #{productCode,jdbcType=VARCHAR},
+      </if>
+      <if test="productStatus != null" >
+        #{productStatus,jdbcType=INTEGER},
+      </if>
+      <if test="accountType != null" >
+        #{accountType,jdbcType=INTEGER},
+      </if>
+      <if test="minAmount != null" >
+        #{minAmount,jdbcType=BIGINT},
+      </if>
+      <if test="maxAmount != null" >
+        #{maxAmount,jdbcType=BIGINT},
+      </if>
+      <if test="created != null" >
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modified != null" >
+        #{modified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="limitCycle != null" >
+        #{limitCycle,jdbcType=INTEGER},
+      </if>
+      <if test="isDel != null" >
+        #{isDel,jdbcType=INTEGER},
+      </if>
+      <if test="isProjectShared != null" >
+        #{isProjectShared,jdbcType=INTEGER},
+      </if>
+      <if test="isPublicPay != null" >
+        #{isPublicPay,jdbcType=TINYINT},
+      </if>
+      <if test="mannulPay != null" >
+        #{mannulPay,jdbcType=TINYINT},
+      </if>
+      <if test="loanOrderPay != null" >
+        #{loanOrderPay,jdbcType=TINYINT},
+      </if>
+      <if test="refundPayOverflow != null" >
+        #{refundPayOverflow,jdbcType=INTEGER},
+      </if>
+      <if test="opOwner != null" >
+        #{opOwner,jdbcType=VARCHAR},
+      </if>
+      <if test="overFlowOrderPay != null" >
+        #{overFlowOrderPay,jdbcType=INTEGER},
+      </if>
+      <if test="productStatusDqm != null" >
+        #{productStatusDqm,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pactera.domain.Product" >
+    update product
+    <set >
+      <if test="productId != null" >
+        PRODUCT_ID = #{productId,jdbcType=BIGINT},
+      </if>
+      <if test="productName != null" >
+        PRODUCT_NAME = #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="productCode != null" >
+        PRODUCT_CODE = #{productCode,jdbcType=VARCHAR},
+      </if>
+      <if test="productStatus != null" >
+        PRODUCT_STATUS = #{productStatus,jdbcType=INTEGER},
+      </if>
+      <if test="accountType != null" >
+        ACCOUNT_TYPE = #{accountType,jdbcType=INTEGER},
+      </if>
+      <if test="minAmount != null" >
+        MIN_AMOUNT = #{minAmount,jdbcType=BIGINT},
+      </if>
+      <if test="maxAmount != null" >
+        MAX_AMOUNT = #{maxAmount,jdbcType=BIGINT},
+      </if>
+      <if test="created != null" >
+        CREATED = #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modified != null" >
+        MODIFIED = #{modified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="limitCycle != null" >
+        LIMIT_CYCLE = #{limitCycle,jdbcType=INTEGER},
+      </if>
+      <if test="isDel != null" >
+        IS_DEL = #{isDel,jdbcType=INTEGER},
+      </if>
+      <if test="isProjectShared != null" >
+        IS_PROJECT_SHARED = #{isProjectShared,jdbcType=INTEGER},
+      </if>
+      <if test="isPublicPay != null" >
+        IS_PUBLIC_PAY = #{isPublicPay,jdbcType=TINYINT},
+      </if>
+      <if test="mannulPay != null" >
+        MANNUL_PAY = #{mannulPay,jdbcType=TINYINT},
+      </if>
+      <if test="loanOrderPay != null" >
+        LOAN_ORDER_PAY = #{loanOrderPay,jdbcType=TINYINT},
+      </if>
+      <if test="refundPayOverflow != null" >
+        REFUND_PAY_OVERFLOW = #{refundPayOverflow,jdbcType=INTEGER},
+      </if>
+      <if test="opOwner != null" >
+        OP_OWNER = #{opOwner,jdbcType=VARCHAR},
+      </if>
+      <if test="overFlowOrderPay != null" >
+        OVER_FLOW_ORDER_PAY = #{overFlowOrderPay,jdbcType=INTEGER},
+      </if>
+      <if test="productStatusDqm != null" >
+        PRODUCT_STATUS_DQM = #{productStatusDqm,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pactera.domain.Product" >
+    update product
+    set PRODUCT_ID = #{productId,jdbcType=BIGINT},
+      PRODUCT_NAME = #{productName,jdbcType=VARCHAR},
+      PRODUCT_CODE = #{productCode,jdbcType=VARCHAR},
+      PRODUCT_STATUS = #{productStatus,jdbcType=INTEGER},
+      ACCOUNT_TYPE = #{accountType,jdbcType=INTEGER},
+      MIN_AMOUNT = #{minAmount,jdbcType=BIGINT},
+      MAX_AMOUNT = #{maxAmount,jdbcType=BIGINT},
+      CREATED = #{created,jdbcType=TIMESTAMP},
+      MODIFIED = #{modified,jdbcType=TIMESTAMP},
+      LIMIT_CYCLE = #{limitCycle,jdbcType=INTEGER},
+      IS_DEL = #{isDel,jdbcType=INTEGER},
+      IS_PROJECT_SHARED = #{isProjectShared,jdbcType=INTEGER},
+      IS_PUBLIC_PAY = #{isPublicPay,jdbcType=TINYINT},
+      MANNUL_PAY = #{mannulPay,jdbcType=TINYINT},
+      LOAN_ORDER_PAY = #{loanOrderPay,jdbcType=TINYINT},
+      REFUND_PAY_OVERFLOW = #{refundPayOverflow,jdbcType=INTEGER},
+      OP_OWNER = #{opOwner,jdbcType=VARCHAR},
+      OVER_FLOW_ORDER_PAY = #{overFlowOrderPay,jdbcType=INTEGER},
+      PRODUCT_STATUS_DQM = #{productStatusDqm,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

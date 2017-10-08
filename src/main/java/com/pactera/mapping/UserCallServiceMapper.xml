@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pactera.dao.IUserCallServiceDao" >
+  <resultMap id="BaseResultMap" type="com.pactera.domain.UserCallService" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="CIF_ID" property="cifId" jdbcType="VARCHAR" />
+    <result column="SERVICE_TYPE" property="serviceType" jdbcType="INTEGER" />
+    <result column="SERVICE_STATUS" property="serviceStatus" jdbcType="INTEGER" />
+    <result column="CREATED" property="created" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, CIF_ID, SERVICE_TYPE, SERVICE_STATUS, CREATED
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_user_call_service
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_user_call_service
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.pactera.domain.UserCallService" >
+    insert into t_user_call_service (ID, CIF_ID, SERVICE_TYPE, 
+      SERVICE_STATUS, CREATED)
+    values (#{id,jdbcType=BIGINT}, #{cifId,jdbcType=VARCHAR}, #{serviceType,jdbcType=INTEGER}, 
+      #{serviceStatus,jdbcType=INTEGER}, #{created,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pactera.domain.UserCallService" >
+    insert into t_user_call_service
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="cifId != null" >
+        CIF_ID,
+      </if>
+      <if test="serviceType != null" >
+        SERVICE_TYPE,
+      </if>
+      <if test="serviceStatus != null" >
+        SERVICE_STATUS,
+      </if>
+      <if test="created != null" >
+        CREATED,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="cifId != null" >
+        #{cifId,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceType != null" >
+        #{serviceType,jdbcType=INTEGER},
+      </if>
+      <if test="serviceStatus != null" >
+        #{serviceStatus,jdbcType=INTEGER},
+      </if>
+      <if test="created != null" >
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pactera.domain.UserCallService" >
+    update t_user_call_service
+    <set >
+      <if test="cifId != null" >
+        CIF_ID = #{cifId,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceType != null" >
+        SERVICE_TYPE = #{serviceType,jdbcType=INTEGER},
+      </if>
+      <if test="serviceStatus != null" >
+        SERVICE_STATUS = #{serviceStatus,jdbcType=INTEGER},
+      </if>
+      <if test="created != null" >
+        CREATED = #{created,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pactera.domain.UserCallService" >
+    update t_user_call_service
+    set CIF_ID = #{cifId,jdbcType=VARCHAR},
+      SERVICE_TYPE = #{serviceType,jdbcType=INTEGER},
+      SERVICE_STATUS = #{serviceStatus,jdbcType=INTEGER},
+      CREATED = #{created,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
