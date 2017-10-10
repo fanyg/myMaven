@@ -13,7 +13,7 @@ import org.junit.Test;
 public class ExecutorServiceDemo {
 
 	/**
-	 * 线程池
+	 * 线程池    Future future=executor.submit(Callable callable);  Future是一个接口
 	 */
 	@Test
   public void test_newFixedThreadPool() {
@@ -25,13 +25,14 @@ public class ExecutorServiceDemo {
 	    maps.put("account",executor.submit(new CheckAccountTask("111")));
         maps.put("password",executor.submit(new CheckPasswordTask("222")));
         maps.put("identity",executor.submit(new CheckIdentityTask("333")));
+        //executor.submit(new CheckIdentityTask2());
   	    System.out.println(Thread.currentThread().getName());
   	    System.out.println(maps.size());
             maps.forEach((k,v) -> {
 				try {    
                     switch (k) {
                         case "account":
-							System.out.println(v.get().isOpenAccount());
+							System.out.println(v.get().isOpenAccount());//get()将会阻塞直到结果准备就绪
                             break;
                         case "password":
                         	System.out.println(v.get().isPayPasswordSet());
@@ -112,5 +113,17 @@ public class ExecutorServiceDemo {
           return result;
       }
   }
+  
+  private class CheckIdentityTask2 implements Runnable {
+
+
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+	}
+  }
+  
   
 }
