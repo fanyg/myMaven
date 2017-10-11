@@ -9,6 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.pactera.domain.UserInfo;
 import com.pactera.service.IUserService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -19,7 +20,8 @@ public class UserServiceImplTest extends AbstractJUnit4SpringContextTests {
 	public IUserService userService;
 	@Test
 	public void testUserServiceImpl() {
-		fail("Not yet implemented");
+		UserInfo userInfo = userService.getUserById(1);
+		System.out.println("userInfo is"+userInfo.getBankCard());
 	}
 
 }
