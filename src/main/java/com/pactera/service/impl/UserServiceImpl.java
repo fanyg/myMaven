@@ -12,11 +12,7 @@ public class UserServiceImpl implements IUserService {
 
     @Autowired
     private IUserInfoDao userDao;
-    
-    public UserServiceImpl() {
-        System.out.println("UserServiceImpl");
-    }
-    
+        
     public UserInfo getUserById(long id) {
         return userDao.selectByPrimaryKey(id);
     }
