@@ -17,7 +17,7 @@ public class OptionalDemo {
 	    Optional<String> name = Optional.of("Sanaulla");
 	 
 	    //创建没有值的Optional实例，例如值为'null'
-	    Optional empty = Optional.ofNullable(null);
+	    Optional<String> empty = Optional.ofNullable(null);
 	 
 	    //isPresent方法用来检查Optional实例是否有值。
 	    if (name.isPresent()) {
@@ -47,6 +47,21 @@ public class OptionalDemo {
 	    System.out.println(empty.orElseGet(() -> "Default Value"));
 	    System.out.println(name.orElseGet(() -> "Default Value"));
 	 
+	    String alternate = empty.orElseGet(() -> {
+            // perform some interesting code operation
+            // then return the alternate value.
+            return "Nimrod";
+ });
+	    
+	    String alternate2 = empty.orElseGet(() -> {
+            // perform some interesting code operation
+            // then return the alternate value.
+            return "Nimrod22";
+ });
+ System.out.println(alternate);
+ System.out.println(alternate2);
+	    
+	    
 	    try {
 	      //orElseThrow与orElse方法类似，区别在于返回值。
 	      //orElseThrow抛出由传入的lambda表达式/方法生成异常。
