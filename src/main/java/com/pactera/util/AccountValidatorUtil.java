@@ -26,11 +26,18 @@ public class AccountValidatorUtil {
      */
     public static final String REGEX_EMAIL = "^([a-z0-9A-Z]+[-|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$";
  
-    /**
+/*    *//**
      * 正则表达式：验证汉字
-     */
-    public static final String REGEX_CHINESE = "[\\u4e00-\\u9fa5]+";
+     *//*
+    public static final String REGEX_CHINESE = "[\\u4e00-\\u9fa5]+";*/
  
+    /**
+     * 正则表达式：验证姓名
+     */
+    public static final String REGEX_CHINESE = "[\u4E00-\u9FA5]{2,5}(?:·[\u4E00-\u9FA5]{2,5})*";
+    
+    
+    
     /**
      * 正则表达式：验证身份证
      */
@@ -135,7 +142,8 @@ public class AccountValidatorUtil {
     	boolean flag_name=qwe.isUsername(username);
     	System.out.println(flag_name);
     	
-    	String chinese="詹晨";
+    	String chinese="马丁哈·路德·金日";
+//    	String chinese="中国 小明";
     	boolean flag_chinese=qwe.isChinese(chinese);
     	System.out.println(flag_chinese);    
     	
