@@ -26,10 +26,7 @@ public class AccountValidatorUtil {
      */
     public static final String REGEX_EMAIL = "^([a-z0-9A-Z]+[-|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$";
  
-/*    *//**
-     * 正则表达式：验证汉字
-     *//*
-    public static final String REGEX_CHINESE = "[\\u4e00-\\u9fa5]+";*/
+
  
     /**
      * 正则表达式：验证姓名
@@ -38,10 +35,6 @@ public class AccountValidatorUtil {
     
     
     
-    /**
-     * 正则表达式：验证身份证
-     */
-    public static final String REGEX_ID_CARD = "(^\\d{18}$)|(^\\d{15}$)";
  
     /**
      * 正则表达式：验证URL
@@ -94,7 +87,7 @@ public class AccountValidatorUtil {
     }
  
     /**
-     * 校验汉字
+     * 校验姓名
      * 
      * @param chinese
      * @return 校验通过返回true，否则返回false
@@ -103,15 +96,7 @@ public class AccountValidatorUtil {
         return Pattern.matches(REGEX_CHINESE, chinese);
     }
  
-    /**
-     * 校验身份证
-     * 
-     * @param idCard
-     * @return 校验通过返回true，否则返回false
-     */
-    public static boolean isIDCard(String idCard) {
-        return Pattern.matches(REGEX_ID_CARD, idCard);
-    }
+
  
     /**
      * 校验URL
@@ -132,7 +117,7 @@ public class AccountValidatorUtil {
     public static boolean isIPAddr(String ipAddr) {
         return Pattern.matches(REGEX_IP_ADDR, ipAddr);
     }
-    
+
     public static void main(String[] args) {
     	AccountValidatorUtil qwe=new AccountValidatorUtil();
     	String mobile="13723160850";
@@ -147,9 +132,8 @@ public class AccountValidatorUtil {
     	boolean flag_chinese=qwe.isChinese(chinese);
     	System.out.println(flag_chinese);    
     	
-    	String idCarg="410825199005010522";
-    	boolean flag_idCarg=qwe.isIDCard(idCarg);
-    	System.out.println(flag_idCarg);   
+
 	}
+    
     
 }
