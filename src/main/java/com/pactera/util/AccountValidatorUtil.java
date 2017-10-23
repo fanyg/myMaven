@@ -26,13 +26,19 @@ public class AccountValidatorUtil {
      */
     public static final String REGEX_EMAIL = "^([a-z0-9A-Z]+[-|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$";
  
-
+   /**
+    * 身份证号(未校验合法性)
+    */
+    public static final String REGEX_idCard= "\\d{17}[\\d|x]|\\d{15}";
  
     /**
      * 正则表达式：验证姓名
      */
     public static final String REGEX_CHINESE = "[\u4E00-\u9FA5]{2,5}(?:·[\u4E00-\u9FA5]{2,5})*";
-    
+  
+    //汉字+拼音
+    //public static final String REGEX_CHINESE = "[\u4E00-\u9FA5a-zA-Z]{2,20}(?:·[\u4E00-\u9FA5a-zA-Z]{2,20})*";
+
     
     
  
@@ -117,6 +123,15 @@ public class AccountValidatorUtil {
     public static boolean isIPAddr(String ipAddr) {
         return Pattern.matches(REGEX_IP_ADDR, ipAddr);
     }
+    /**
+     * 校验身份证号
+     * 
+     * @param idCard
+     * @return
+     */
+    public static boolean isIdCard(String idCard) {
+    	return Pattern.matches(REGEX_idCard, idCard);
+    }
 
     public static void main(String[] args) {
     	AccountValidatorUtil qwe=new AccountValidatorUtil();
@@ -127,6 +142,11 @@ public class AccountValidatorUtil {
     	boolean flag_name=qwe.isUsername(username);
     	System.out.println(flag_name);
     	
+    	String idCard="111111111111111111";
+//    	String chinese="中国 小明";
+    	boolean flag_idCard=qwe.isIdCard(idCard);
+    	System.out.println(flag_idCard);    
+
     	String chinese="马丁哈·路德·金日";
 //    	String chinese="中国 小明";
     	boolean flag_chinese=qwe.isChinese(chinese);
