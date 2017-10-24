@@ -17,9 +17,10 @@ public class AccountValidatorUtil {
     public static final String REGEX_PASSWORD = "^[a-zA-Z0-9]{6,20}$";
  
     /**
-     * 正则表达式：验证手机号
+     * 正则表达式：验证手机号(不全，所以就不要做验证了，直接写11就行了吧)
      */
-    public static final String REGEX_MOBILE = "^((17[0-9])|(14[0-9])|(13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$";
+   // public static final String REGEX_MOBILE = "^((17[0-9])|(14[0-9])|(13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$";
+    public static final String REGEX_MOBILE = "^((13\\d{9}$)|(15[0,1,2,3,5,6,7,8,9]\\d{8}$)|(18[0,2,5,6,7,8,9]\\d{8}$)|(147\\d{8})$)";
  
     /**
      * 正则表达式：验证邮箱
@@ -135,7 +136,7 @@ public class AccountValidatorUtil {
 
     public static void main(String[] args) {
     	AccountValidatorUtil qwe=new AccountValidatorUtil();
-    	String mobile="13723160850";
+    	String mobile="18234068125";
     	boolean flag = qwe.isMobile(mobile);
     	System.out.println(flag);
     	String username="詹晨";
