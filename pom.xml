@@ -63,11 +63,26 @@
         <artifactId>spring-webmvc</artifactId>  
         <version>${spring.version}</version>  
     </dependency>  
-    <dependency>  
-        <groupId>org.springframework</groupId>  
-        <artifactId>spring-aop</artifactId>  
-        <version>${spring.version}</version>  
-    </dependency>  
+	<dependency>  
+	    <groupId>org.springframework</groupId>  
+	    <artifactId>spring-aop</artifactId>  
+	    <version>${spring.version}</version>  
+	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-aspects</artifactId>
+		<version>${spring.version}</version>
+	</dependency>  
+	<dependency>
+		<groupId>org.aspectj</groupId>
+		<artifactId>aspectjrt</artifactId>
+		<version>1.6.8</version>
+	</dependency>
+	<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>1.6.8</version>
+	</dependency> 
 
     <dependency>  
         <groupId>org.springframework</groupId>  
@@ -123,7 +138,11 @@
         <artifactId>log4j</artifactId>  
         <version>${log4j.version}</version>  
     </dependency>  
-      
+    <dependency>
+	    <groupId>org.quartz-scheduler</groupId>
+	    <artifactId>quartz</artifactId>
+	    <version>1.8.4</version>
+	</dependency> 
       
     <!-- 格式化对象，方便输出日志 -->  
     <dependency>  
@@ -178,6 +197,17 @@
             <artifactId>guava</artifactId>
             <version>21.0</version>
     </dependency>
+    <dependency>
+			<groupId>org.hibernate</groupId>
+			<version>5.2.5.Final</version>
+			<artifactId>hibernate-validator</artifactId>
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/c3p0/c3p0 -->
+	<dependency>  
+	    <groupId>com.mchange</groupId>  
+	    <artifactId>c3p0</artifactId>  
+	    <version>0.9.5.2</version>  
+	</dependency>
   </dependencies>
 <build>
     <plugins>

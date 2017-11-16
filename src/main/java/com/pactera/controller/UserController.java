@@ -5,6 +5,7 @@ import java.util.concurrent.Future;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
@@ -16,6 +17,7 @@ import com.pactera.domain.UserInfo;
 import com.pactera.service.IUserService;
 import com.pactera.service.impl.MultiThreadProcessService;
 import com.pactera.service.impl.MultiThreadService2;
+import com.pactera.service.impl.RunnableDemo;
 
 @Controller
 @RequestMapping("/user")
@@ -32,6 +34,8 @@ public class UserController {
 
     @Autowired
     private MultiThreadProcessService multiThreadProcessService;
+    @Autowired
+    private RunnableDemo demo;
 
     
     
@@ -66,5 +70,36 @@ public class UserController {
     	return flag;
     	
     }
+    
+    @RequestMapping("/insertUser")
+    public String insertUser(HttpServletRequest request,Model model) throws InterruptedException {
+    	Thread.currentThread().sleep(5000);
+    	UserInfo userInfo=new UserInfo();
+    	userInfo.setLoginPhoneNumber("18910160850");
+    	userInfo.setCifId("18910160850");
+    	userService.insertUser(userInfo);
+    	userService.selectByCustomerId("18910160850");
+    	
+        return "showUser";  
+    }
+
+    @RequestMapping("/testThread")
+    public String testThread(HttpServletRequest request,Model model) throws InterruptedException {
+    	
+    	UserInfo userInfo=new UserInfo();
+    	userInfo.setLoginPhoneNumber("18910160850");
+    	userInfo.setCifId("18910160850");
+    	demo.setUserInfo(userInfo);
+    	taskExecutor.execute(demo);	
+    	taskExecutor.execute(demo);	
+    	taskExecutor.execute(demo);	
+    	taskExecutor.execute(demo);	
+    	taskExecutor.execute(demo);	
+
+    	
+    	System.out.println("GameOver.......");
+    	return "success";  
+    }
+    
     
 }

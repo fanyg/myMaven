@@ -2,65 +2,36 @@ package com.pactera.domain;
 
 import java.util.Date;
 
+import org.springframework.stereotype.Component;
+
+
 public class UserInfo {
     private Long id;
-
     private String loginPhoneNumber;
-
     private String cifId;
-
     private String clientName;
-
     private String icardType;
-
     private String icardId;
-
     private Integer entryStatus;
-
     private Integer listType;
-
+    private Integer contactFlag;
     private String creditReq;
-
     private Integer creditStatus;
-
     private Integer overdueFlag;
-
-    private Integer openaccountFlag;
-
+    private Integer openAccountFlag;
     private Integer identityChannel;
-
     private String bankCard;
-
-    private String bankCode;
-
-    private Integer bankCardType;
-
     private String cellPhoneNo;
-
-    private Integer vertifyPoliceFlag;
-
-    private Integer uploadIdentityFlag;
-
     private Integer vertifyIdentityFlag;
-
+    private Integer uploadIdentityFlag;
     private Integer vertifyPoliceImageFlag;
-
     private Integer vertifyFaceFlag;
-
     private Integer signCreditFlag;
-
     private Integer fillInSuppinfoFlag;
-
     private Integer setTranpassFlag;
-
-    private Integer sentCreditFlag;
-
     private Long creditResult;
-
     private Long validAmount;
-
-    private Integer userStatus;
-
+    private Date created;
     private Date modified;
 
     public Long getId() {
@@ -76,7 +47,7 @@ public class UserInfo {
     }
 
     public void setLoginPhoneNumber(String loginPhoneNumber) {
-        this.loginPhoneNumber = loginPhoneNumber == null ? null : loginPhoneNumber.trim();
+        this.loginPhoneNumber = loginPhoneNumber;
     }
 
     public String getCifId() {
@@ -84,7 +55,7 @@ public class UserInfo {
     }
 
     public void setCifId(String cifId) {
-        this.cifId = cifId == null ? null : cifId.trim();
+        this.cifId = cifId;
     }
 
     public String getClientName() {
@@ -92,7 +63,7 @@ public class UserInfo {
     }
 
     public void setClientName(String clientName) {
-        this.clientName = clientName == null ? null : clientName.trim();
+        this.clientName = clientName;
     }
 
     public String getIcardType() {
@@ -100,7 +71,7 @@ public class UserInfo {
     }
 
     public void setIcardType(String icardType) {
-        this.icardType = icardType == null ? null : icardType.trim();
+        this.icardType = icardType;
     }
 
     public String getIcardId() {
@@ -108,23 +79,15 @@ public class UserInfo {
     }
 
     public void setIcardId(String icardId) {
-        this.icardId = icardId == null ? null : icardId.trim();
+        this.icardId = icardId;
     }
 
-    public Integer getEntryStatus() {
-        return entryStatus;
+    public Integer getContactFlag() {
+        return contactFlag;
     }
 
-    public void setEntryStatus(Integer entryStatus) {
-        this.entryStatus = entryStatus;
-    }
-
-    public Integer getListType() {
-        return listType;
-    }
-
-    public void setListType(Integer listType) {
-        this.listType = listType;
+    public void setContactFlag(Integer contactFlag) {
+        this.contactFlag = contactFlag;
     }
 
     public String getCreditReq() {
@@ -132,7 +95,7 @@ public class UserInfo {
     }
 
     public void setCreditReq(String creditReq) {
-        this.creditReq = creditReq == null ? null : creditReq.trim();
+        this.creditReq = creditReq;
     }
 
     public Integer getCreditStatus() {
@@ -141,22 +104,6 @@ public class UserInfo {
 
     public void setCreditStatus(Integer creditStatus) {
         this.creditStatus = creditStatus;
-    }
-
-    public Integer getOverdueFlag() {
-        return overdueFlag;
-    }
-
-    public void setOverdueFlag(Integer overdueFlag) {
-        this.overdueFlag = overdueFlag;
-    }
-
-    public Integer getOpenaccountFlag() {
-        return openaccountFlag;
-    }
-
-    public void setOpenaccountFlag(Integer openaccountFlag) {
-        this.openaccountFlag = openaccountFlag;
     }
 
     public Integer getIdentityChannel() {
@@ -172,23 +119,7 @@ public class UserInfo {
     }
 
     public void setBankCard(String bankCard) {
-        this.bankCard = bankCard == null ? null : bankCard.trim();
-    }
-
-    public String getBankCode() {
-        return bankCode;
-    }
-
-    public void setBankCode(String bankCode) {
-        this.bankCode = bankCode == null ? null : bankCode.trim();
-    }
-
-    public Integer getBankCardType() {
-        return bankCardType;
-    }
-
-    public void setBankCardType(Integer bankCardType) {
-        this.bankCardType = bankCardType;
+        this.bankCard = bankCard;
     }
 
     public String getCellPhoneNo() {
@@ -196,23 +127,7 @@ public class UserInfo {
     }
 
     public void setCellPhoneNo(String cellPhoneNo) {
-        this.cellPhoneNo = cellPhoneNo == null ? null : cellPhoneNo.trim();
-    }
-
-    public Integer getVertifyPoliceFlag() {
-        return vertifyPoliceFlag;
-    }
-
-    public void setVertifyPoliceFlag(Integer vertifyPoliceFlag) {
-        this.vertifyPoliceFlag = vertifyPoliceFlag;
-    }
-
-    public Integer getUploadIdentityFlag() {
-        return uploadIdentityFlag;
-    }
-
-    public void setUploadIdentityFlag(Integer uploadIdentityFlag) {
-        this.uploadIdentityFlag = uploadIdentityFlag;
+        this.cellPhoneNo = cellPhoneNo;
     }
 
     public Integer getVertifyIdentityFlag() {
@@ -221,6 +136,14 @@ public class UserInfo {
 
     public void setVertifyIdentityFlag(Integer vertifyIdentityFlag) {
         this.vertifyIdentityFlag = vertifyIdentityFlag;
+    }
+
+    public Integer getUploadIdentityFlag() {
+        return uploadIdentityFlag;
+    }
+
+    public void setUploadIdentityFlag(Integer uploadIdentityFlag) {
+        this.uploadIdentityFlag = uploadIdentityFlag;
     }
 
     public Integer getVertifyPoliceImageFlag() {
@@ -255,22 +178,6 @@ public class UserInfo {
         this.fillInSuppinfoFlag = fillInSuppinfoFlag;
     }
 
-    public Integer getSetTranpassFlag() {
-        return setTranpassFlag;
-    }
-
-    public void setSetTranpassFlag(Integer setTranpassFlag) {
-        this.setTranpassFlag = setTranpassFlag;
-    }
-
-    public Integer getSentCreditFlag() {
-        return sentCreditFlag;
-    }
-
-    public void setSentCreditFlag(Integer sentCreditFlag) {
-        this.sentCreditFlag = sentCreditFlag;
-    }
-
     public Long getCreditResult() {
         return creditResult;
     }
@@ -287,12 +194,12 @@ public class UserInfo {
         this.validAmount = validAmount;
     }
 
-    public Integer getUserStatus() {
-        return userStatus;
+    public Date getCreated() {
+        return created;
     }
 
-    public void setUserStatus(Integer userStatus) {
-        this.userStatus = userStatus;
+    public void setCreated(Date created) {
+        this.created = created;
     }
 
     public Date getModified() {
@@ -301,5 +208,45 @@ public class UserInfo {
 
     public void setModified(Date modified) {
         this.modified = modified;
+    }
+
+    public Integer getEntryStatus() {
+        return entryStatus;
+    }
+
+    public void setEntryStatus(Integer entryStatus) {
+        this.entryStatus = entryStatus;
+    }
+
+    public Integer getListType() {
+        return listType;
+    }
+
+    public void setListType(Integer listType) {
+        this.listType = listType;
+    }
+
+    public Integer getOverdueFlag() {
+        return overdueFlag;
+    }
+
+    public void setOverdueFlag(Integer overdueFlag) {
+        this.overdueFlag = overdueFlag;
+    }
+
+    public Integer getOpenAccountFlag() {
+        return openAccountFlag;
+    }
+
+    public void setOpenAccountFlag(Integer openAccountFlag) {
+        this.openAccountFlag = openAccountFlag;
+    }
+
+    public Integer getSetTranpassFlag() {
+        return setTranpassFlag;
+    }
+
+    public void setSetTranpassFlag(Integer setTranpassFlag) {
+        this.setTranpassFlag = setTranpassFlag;
     }
 }

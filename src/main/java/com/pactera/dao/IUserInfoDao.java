@@ -9,9 +9,12 @@ public interface IUserInfoDao {
 
     int insertSelective(UserInfo record);
 
-    UserInfo selectByPrimaryKey(Long id);
+    UserInfo selectByPrimaryKey(long id);
 
+    UserInfo selectByCustomerId(String id);
+    
     int updateByPrimaryKeySelective(UserInfo record);
 
     int updateByPrimaryKey(UserInfo record);
+    int updateByCustomerId(UserInfo record);
 }
