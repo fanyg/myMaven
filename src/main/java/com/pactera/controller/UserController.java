@@ -100,6 +100,24 @@ public class UserController {
     	System.out.println("GameOver.......");
     	return "success";  
     }
-    
+    @RequestMapping("/deleteUser")
+    @Transactional
+    public String deleteUser(HttpServletRequest request,Model model) throws InterruptedException {
+    	
+    	try {    		
+    		
+    		userService.deleteByPrimaryKey(529);
+    		UserInfo userInfo=new UserInfo();
+    		userInfo.setLoginPhoneNumber("18910160850");
+    		userInfo.setCifId("18910160850");//重复插入加事务，失败时可回滚
+    		userService.insertUser(userInfo);
+    		
+    	}catch (Exception e) {
+			System.out.println("我睡醒了。。。");
+			throw new RuntimeException();//如果用try catch 捕获异常，如果不抛出运行时异常，那么事务不会回滚，
+		}
+    	
+        return "success";  
+    }
     
 }

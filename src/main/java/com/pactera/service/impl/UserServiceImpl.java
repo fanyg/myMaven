@@ -27,7 +27,7 @@ public class UserServiceImpl implements IUserService {
 	@Override
 	public int deleteByPrimaryKey(long l) {
 		// TODO Auto-generated method stub
-		return 0;
+		return userDao.deleteByPrimaryKey(l);
 	}
 
 	@Override
