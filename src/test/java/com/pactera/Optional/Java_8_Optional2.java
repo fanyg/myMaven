@@ -35,6 +35,8 @@ public class Java_8_Optional2 {
 	}
 	/**
 	 * Lambda 表达式['læmdə]
+	 * 每一个lambda表达式都对应一个类型，通常是接口类型
+	 * “函数式接口”是指仅仅只包含一个抽象方法的接口，每一个该类型的lambda表达式都会被匹配到这个抽象方法
 	 */
 	@Test
 	public void test2() {
