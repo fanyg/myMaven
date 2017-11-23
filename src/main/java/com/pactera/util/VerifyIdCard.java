@@ -80,6 +80,9 @@ public class VerifyIdCard {
 		VerifyIdCard qwe=new VerifyIdCard();
 		 boolean flag = qwe.Verify(id);
 		 System.out.println(flag);
+		 long csid=100000014215L;
+		 System.out.println(csid%16);
 	}
 
+	
 }
