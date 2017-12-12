@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.IntStream;
 
 import org.junit.Test;
 
@@ -34,7 +35,7 @@ public class Java_8_Optional2 {
 		formula.sqrt(0);
 	}
 	/**
-	 * Lambda 表达式['læmdə]
+	 * Lambda 表达式['læmdə],是一个匿名函数。
 	 * 每一个lambda表达式都对应一个类型，通常是接口类型
 	 * “函数式接口”是指仅仅只包含一个抽象方法的接口，每一个该类型的lambda表达式都会被匹配到这个抽象方法
 	 */
@@ -60,5 +61,60 @@ public class Java_8_Optional2 {
 		Collections.sort(names, (a,b) -> b.compareTo(a));
 		System.out.println(names);
 		
+	}
+	@Test
+	/**测试lambda
+	 * 
+	 */
+	public void test3() {
+/*		Formula c=new Formula() {
+
+			@Override
+			public double calculate(int a) {
+				// TODO Auto-generated method stub
+				return 10*a;
+			}
+			
+		};
+		
+		System.out.println(c.calculate(10));*/
+		
+		Formula c1=a->10*a;
+		c1.calculate(10);
+		System.out.println(c1.calculate(10));
+		
+		
+		List<Integer> list=Arrays.asList(1,5,7,9,3);
+//		Predicate predicate= (String a)->{a>4;};
+		//list.stream().filter(a -> a>4);
+		long num = list.stream().filter( a ->  a > 4 ).count();
+		
+	}
+	
+	
+/*	有多种方式生成 Stream Source：
+	从 Collection 和数组
+	Collection.stream()
+	Collection.parallelStream()
+	Arrays.stream(T array) or Stream.of()
+	从 BufferedReader
+	java.io.BufferedReader.lines()
+	静态工厂
+	java.util.stream.IntStream.range()
+	java.nio.file.Files.walk()
+	自己构建
+	java.util.Spliterator
+	其它
+	Random.ints()
+	BitSet.stream()
+	Pattern.splitAsStream(java.lang.CharSequence)
+	JarFile.stream()*/
+	@Test
+	public void Stream() {
+		String [] strArray=new String[] {"12","123","124","157"};
+		java.util.stream.Stream<String> stream = java.util.stream.Stream.of(strArray);
+		java.util.stream.Stream<String> stream2 = Arrays.stream(strArray);
+		
+		IntStream.of(new int[]{1, 2, 3}).forEach((s)->{System.out.println(s);});
 	}
 }
